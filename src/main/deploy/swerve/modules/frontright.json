@@ -11,7 +11,7 @@
     },
     "encoder": {
       "type": "cancoder",
-      "id": 105,
+      "id": 35,
       "canbus": null
     },
     "inverted": {
