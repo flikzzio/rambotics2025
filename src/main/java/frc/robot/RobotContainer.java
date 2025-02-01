@@ -4,7 +4,10 @@
 
 package frc.robot;
 
+import java.io.File;
+
 import com.pathplanner.lib.auto.NamedCommands;
+
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
@@ -16,9 +19,10 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.subsystems.AprilTagLogger;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
-import java.io.File;
 import swervelib.SwerveInputStream;
+
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a "declarative" paradigm, very
@@ -33,8 +37,11 @@ public class RobotContainer
   // The robot's subsystems and commands are defined here...
   private final SwerveSubsystem       drivebase  = new SwerveSubsystem(new File(Filesystem.getDeployDirectory(),
                                                                                 "swerve/neo"));
+  private final AprilTagLogger aprilTagLogger;
 
-  /**
+
+                                                                                
+   /*                                                             
    * Converts driver input into a field-relative ChassisSpeeds that is controlled by angular velocity.
    */
   SwerveInputStream driveAngularVelocity = SwerveInputStream.of(drivebase.getSwerveDrive(),
@@ -93,7 +100,11 @@ public class RobotContainer
     configureBindings();
     DriverStation.silenceJoystickConnectionWarning(true);
     NamedCommands.registerCommand("test", Commands.print("I EXIST"));
+    aprilTagLogger = new AprilTagLogger(); // Change to your actual camera name
   }
+  public AprilTagLogger getAprilTagLogger() {
+    return aprilTagLogger;
+}
 
   /**
    * Use this method to define your trigger->command mappings. Triggers can be created via the
