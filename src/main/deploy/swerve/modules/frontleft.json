@@ -1,6 +1,6 @@
 {
 "drive": {
-    "type": "sparkmax_neo",
+    "type": "krakenx60",
     "id": 15,
     "canbus": null
   },
