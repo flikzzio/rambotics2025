@@ -2,12 +2,12 @@
 "drive": {
     "type": "krakenx60",
     "id": 15,
-    "canbus": null
+    "canbus": 15
   },
   "angle": {
     "type": "sparkmax_neo",
     "id": 16,
-    "canbus": null
+    "canbus": 16
   },
   "encoder": {
     "type": "cancoder",
